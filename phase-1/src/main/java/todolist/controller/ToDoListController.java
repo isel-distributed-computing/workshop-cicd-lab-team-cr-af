@@ -64,9 +64,9 @@ public class ToDoListController {
     }
 
     private void validateToken(String authorization) {
-        if (!authorization.startsWith("Bearer: "))
+        if (!authorization.startsWith("Bearer "))
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid JWT token");
-        String token = authorization.substring("Bearer: ".length());
+        String token = authorization.substring("Bearer ".length());
         if (!userService.validateToken(token)) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid JWT token");
         }
